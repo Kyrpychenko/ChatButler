@@ -10,10 +10,8 @@ const props = defineProps<{
     messages: Message[];
 }>();
 const { currentUser, messages } = toRefs(props);
-const inputMessage = ref("");
-const messageForm = useForm<{ text: string; sent: Date }>({
-    text: inputMessage.value,
-    sent: new Date(),
+const messageForm = useForm<{ text: string }>({
+    text: "",
 });
 
 function addMessage() {
@@ -29,7 +27,7 @@ function addMessage() {
             class="fixed-bottom d-flex justify-content-center align-items-center mb-4"
         >
             <TextInput
-                v-model="inputMessage"
+                v-model="messageForm.text"
                 style="width: 60vw"
                 placeholder="Schreiben Sie eine Nachricht"
             ></TextInput>

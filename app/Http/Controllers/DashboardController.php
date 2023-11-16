@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chat;
 use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -22,15 +21,15 @@ class DashboardController extends Controller
     {
         $validated = $request->validate([
             'text' => 'required|string',
-            'sent' => 'date'
         ]);
 
         $message = Message::create([
             'text' => $validated['text'],
-            'sent' => $validated['sent'],
+            'sent' => Carbon::now(),
             'type' => 'user',
             'chat_id' => 1
         ]);
+
         return back();
     }
 }
