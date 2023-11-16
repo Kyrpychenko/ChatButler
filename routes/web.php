@@ -26,5 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::controller(DashboardController::class)->middleware("auth")->group(function () {
+    Route::post('/storeMessage', 'store')->name('storeMessage');
+});
 require __DIR__ . '/auth.php';

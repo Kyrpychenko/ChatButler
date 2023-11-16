@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, useForm } from "@inertiajs/vue3";
 import { TextInput, Button } from "custom-mbd-components";
 import { ref } from "vue";
-import { Message, User, Chat } from "@/types/index";
+import { Message, User } from "@/types/index";
 import { toRefs } from "vue";
 const props = defineProps<{
     currentUser: User;
@@ -18,7 +18,6 @@ const messageForm = useForm<{ text: string; sent: Date }>({
 
 function addMessage() {
     messageForm.post(route("storeMessage"), { preserveScroll: true });
-    inputMessage.value = "";
 }
 </script>
 
@@ -39,7 +38,10 @@ function addMessage() {
             >
         </div>
         <template v-for="message in messages">
-            <div>{{ message.text }}</div>
+            <div class="d-flex justify-content-end rounded">
+                {{ message.text }}
+                <div class="ms-2">{{ message.sent }}</div>
+            </div>
         </template>
     </AuthenticatedLayout>
 </template>
