@@ -81,7 +81,7 @@ import { Link } from "@inertiajs/vue3";
                         <div
                             class="nav-item dropdown d-flex justify-content-center align-items-center text-light"
                         >
-                            {{ $page.props.auth.user.todo_lists }}
+                            {{ $page.props.auth.user }}
                         </div>
                         <li
                             class="nav-item dropdown d-flex justify-content-center align-items-center"
