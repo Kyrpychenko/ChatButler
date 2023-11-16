@@ -18,3 +18,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/ChatCompletion', function (Request $request) {
+    $request->validate([
+        'model' => 'required|in:blenderbot-400M-distill',
+        'temperature' => 'required|numeric|min:0.7|max:0.7',
+        'messages' => 'required|array|min:1',
+        'messages.*.content' => 'required|string',
+        'messages.*.role' => 'required|in:user,assistant,system',
+    ]);
+
+
+
+    return response()->json([
+        'message' => [
+            'role' => 'assistant',
+            'content' => trim($result),
+        ],
+    ]);
+});

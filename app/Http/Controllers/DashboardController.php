@@ -30,6 +30,17 @@ class DashboardController extends Controller
             'chat_id' => 1
         ]);
 
+        $prompt = collect(Message::latest()->limit(6)->get())->map(function ($message) {
+            return $message["type"] . ': ' . str_replace("\n", " ", $message["text"]);
+        })->join("\n");
+        $result = shell_exec("/usr/local/python/current/bin/python /workspaces/python-ai-test/main.py " . escapeshellarg($prompt));
+
+        $message = Message::create([
+            'text' => $result,
+            'sent' => Carbon::now(),
+            'type' => 'assistant',
+            'chat_id' => 1
+        ]);
         return back();
     }
 }

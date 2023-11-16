@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('chat_id')->constrained()->cascadeOnDelete()->default(1);
             $table->enum("type", ["user", "system", "assistant"]);
-            $table->string('text');
+            $table->text('text');
             $table->date('sent');
         });
     }

@@ -9,7 +9,7 @@ import { Link } from "@inertiajs/vue3";
 <template>
     <div style="min-height: 100vh" class="d-flex flex-column">
         <nav
-            class="navbar navbar-dark navbar-expand-lg"
+            class="navbar sticky-top navbar-dark navbar-expand-lg"
             style="background-color: #001219"
         >
             <div class="container d-flex">
@@ -37,7 +37,7 @@ import { Link } from "@inertiajs/vue3";
                         style="filter: invert(1)"
                     ></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <div class="navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav d-flex w-100">
                         <li class="nav-item">
                             <a
@@ -59,21 +59,6 @@ import { Link } from "@inertiajs/vue3";
                                                 : 'text-secondary'
                                         "
                                     ></i>
-                                </NavLink>
-                                <NavLink
-                                    :href="route('Dashboard')"
-                                    :active="route().current('Dashboard')"
-                                    class="text-decoration-none"
-                                >
-                                    <i
-                                        style="font-size: 1.5rem"
-                                        class="bi bi-clipboard"
-                                        :class="
-                                            route().current('Dashboard')
-                                                ? 'text-light'
-                                                : 'text-secondary'
-                                        "
-                                    />
                                 </NavLink>
                             </a>
                         </li>
@@ -139,7 +124,9 @@ import { Link } from "@inertiajs/vue3";
                 </div>
             </div>
         </nav>
-        <main class="container pt-4 h-100">
+        <main
+            class="container pt-4 h-100 d-flex justify-content-center align-items-center"
+        >
             <slot />
         </main>
     </div>
