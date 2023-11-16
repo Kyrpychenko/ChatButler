@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head, useForm } from "@inertiajs/vue3";
-import {
-    Button,
-    CheckboxInput,
-    EmailInput,
-    Message,
-    PasswordInput,
-} from "custom-mbd-components";
+import {Button,CheckboxInput,EmailInput,Message,PasswordInput,} from "custom-mbd-components";
 // import { Button } from "custom-mbd-components";
 
 defineProps<{

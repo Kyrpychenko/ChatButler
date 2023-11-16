@@ -49,7 +49,7 @@ import { Link } from "@inertiajs/vue3";
                                     :href="route('Dashboard')"
                                     :active="route().current('dashboard')"
                                     class="text-decoration-none"
-                                >
+                                    >TEST
                                     <i
                                         style="font-size: 1.5rem"
                                         class="bi bi-house-door-fill"
@@ -58,18 +58,18 @@ import { Link } from "@inertiajs/vue3";
                                                 ? 'text-light'
                                                 : 'text-secondary'
                                         "
-                                    />
+                                    ></i>
                                 </NavLink>
                                 <NavLink
-                                    :href="route('lists')"
-                                    :active="route().current('lists')"
+                                    :href="route('Dashboard')"
+                                    :active="route().current('Dashboard')"
                                     class="text-decoration-none"
                                 >
                                     <i
                                         style="font-size: 1.5rem"
                                         class="bi bi-clipboard"
                                         :class="
-                                            route().current('lists')
+                                            route().current('Dashboard')
                                                 ? 'text-light'
                                                 : 'text-secondary'
                                         "
