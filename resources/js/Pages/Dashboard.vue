@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, useForm } from "@inertiajs/vue3";
 import { TextInput, Button } from "custom-mbd-components";
 import { Message, User } from "@/types/index";
-import { ref, toRefs } from "vue";
+import { onMounted, ref, toRefs } from "vue";
 import { watch } from "vue";
 import { watchEffect } from "vue";
 const props = defineProps<{
@@ -16,6 +16,13 @@ watchEffect(() => (messages.value = messageProp.value));
 const messageForm = useForm<{ text: string }>({
     text: "",
 });
+const messagesContainer = ref<HTMLDivElement | null>(null);
+function scrollMessagesToBottom() {
+    if (messagesContainer.value) {
+        messagesContainer.value.scrollTop =
+            messagesContainer.value.scrollHeight;
+    }
+}
 function addMessage() {
     messageForm.post(route("storeMessage"), { preserveScroll: true });
     messages.value.push({
@@ -26,27 +33,39 @@ function addMessage() {
         chat: messages.value[0]?.chat,
     });
     messageForm.text = "";
+    scrollMessagesToBottom();
 }
+onMounted(() => {
+    scrollMessagesToBottom();
+});
 </script>
 
 <template>
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <div
-            class="fixed-bottom d-flex justify-content-center align-items-center bg-white"
-        >
-            <TextInput
-                v-model="messageForm.text"
-                style="width: 60vw"
-                placeholder="Schreiben Sie eine Nachricht"
-                class="bg-white mb-4"
-            ></TextInput>
-            <Button class="mt-3 ms-2 btn btn-primary mb-4" @click="addMessage()"
-                >Abschicken</Button
+        <form @submit.prevent>
+            <div
+                class="fixed-bottom d-flex justify-content-center align-items-center bg-white"
             >
-        </div>
-        <div class="flex-column" style="width: 66vw; padding-bottom: 4rem">
+                <TextInput
+                    v-model="messageForm.text"
+                    style="width: 60vw"
+                    placeholder="Schreiben Sie eine Nachricht"
+                    class="bg-white mb-4"
+                ></TextInput>
+                <Button
+                    class="mt-3 ms-2 btn btn-primary mb-4"
+                    @click="addMessage()"
+                    >Abschicken</Button
+                >
+            </div>
+        </form>
+        <div
+            class="flex-column"
+            style="width: 66vw; padding-bottom: 4rem"
+            ref="messagesContainer"
+        >
             <template v-for="message in messages">
                 <div
                     class="d-flex mb-3 w-100"
