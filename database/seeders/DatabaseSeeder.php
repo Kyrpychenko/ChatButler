@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             "password" => Hash::make("admin"),
         ]);
+        \App\Models\ChatRoom::factory()->create([
+            'title' => 'test'
+        ]);
+        \App\Models\Guest::factory()->create([]);
+        \App\Models\Chat::factory()->create([]);
     }
 }

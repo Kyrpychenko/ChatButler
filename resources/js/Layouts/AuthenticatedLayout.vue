@@ -49,7 +49,7 @@ import { Link } from "@inertiajs/vue3";
                                     :href="route('Dashboard')"
                                     :active="route().current('dashboard')"
                                     class="text-decoration-none"
-                                    >TEST
+                                >
                                     <i
                                         style="font-size: 1.5rem"
                                         class="bi bi-house-door-fill"
@@ -65,9 +65,7 @@ import { Link } from "@inertiajs/vue3";
                         <div class="flex-grow-1"></div>
                         <div
                             class="nav-item dropdown d-flex justify-content-center align-items-center text-light"
-                        >
-                            {{ $page.props.auth.user }}
-                        </div>
+                        ></div>
                         <li
                             class="nav-item dropdown d-flex justify-content-center align-items-center"
                         >

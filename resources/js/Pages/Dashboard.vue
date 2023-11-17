@@ -104,46 +104,29 @@ function addMessage() {
 </template>
 <style scoped>
 .speech {
-    /* (A1) FONT */
     font-size: 1.1em;
-
-    /* (A2) COLORS */
     color: #fff;
     background: rgb(33, 37, 41);
-
-    /* (A3) DIMENSIONS + POSITION */
     position: relative;
     padding: 20px;
     border-radius: 10px;
     max-width: 320px;
 }
-
-/* (B) ADD SPEECH "CALLOUT TAIL" */
-/* (B1) USE ::AFTER TO CREATE THE "TAIL" */
 .speech::after {
-    /* (B1-1) ATTACH TRANSPARENT BORDERS */
     content: "";
     border: 20px solid transparent;
-
-    /* (B1-2) NECESSARY TO POSITION THE "TAIL" */
     position: absolute;
 }
 .right.speech::after {
-    /* (C3-1) RIGHT TRIANGLE */
     border-left-color: rgb(33, 37, 41);
     border-right: 0;
-
-    /* (C3-2) POSITION AT RIGHT */
     right: -20px;
     top: 50%;
     margin-top: -20px;
 }
 .left.speech::after {
-    /* (C2-1) LEFT TRIANGLE */
     border-right-color: rgb(33, 37, 41);
     border-left: 0;
-
-    /* (C2-2) POSITION AT LEFT */
     left: -20px;
     top: 50%;
     margin-top: -20px;
