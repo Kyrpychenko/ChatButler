@@ -9,7 +9,7 @@
         "updateMBD": "npm i github:MBD-Team/CustomMBDComponents",
         "autofix": "npm install && composer install && php artisan optimize:clear",
         "installPythonDeps": "pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio===0.9.1 -f https://download.pytorch.org/whl/torch_stable.html && pip install transformers",
-        "downloadModel": "/usr/local/python/current/bin/python /workspaces/python-ai-test/main.py test"
+        "downloadModel": "/usr/local/python/current/bin/python /workspaces/ChatButler/main.py test"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
@@ -29,6 +29,7 @@
     "dependencies": {
         "bootstrap": "^5.3.2",
         "bootstrap-icons": "^1.11.1",
-        "custom-mbd-components": "github:MBD-Team/CustomMBDComponents"
+        "custom-mbd-components": "github:MBD-Team/CustomMBDComponents",
+        "python": "^0.0.4"
     }
 }

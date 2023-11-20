@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $prompt = collect(Message::latest()->limit(6)->get())->map(function ($message) {
             return $message["type"] . ': ' . str_replace("\n", " ", $message["text"]);
         })->join("\n");
-        $result = shell_exec("/usr/local/python/current/bin/python /workspaces/python-ai-test/main.py " . escapeshellarg($prompt));
+        $result = shell_exec("/usr/local/python/current/bin/python /workspaces/ChatButler/main.py " . escapeshellarg($prompt));
 
         $message = Message::create([
             'text' => $result,
